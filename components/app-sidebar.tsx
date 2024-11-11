@@ -5,25 +5,24 @@ import {
   FileClock,
   Home,
   LifeBuoy,
-  Link,
   Send,
   Settings2,
   WalletCards,
 } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
-import { NavSecondary } from "@/components/nav-secondary";
-import { NavUser } from "@/components/nav-user";
+// import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
+  // SidebarFooter,
   SidebarHeader,
-  SidebarMenu,
+  // SidebarMenu,
   // SidebarMenuButton,
   // SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
+import UsageTrack from "@/app/dashboard/_components/UsageTrack";
 
 const data = {
   user: {
@@ -34,23 +33,23 @@ const data = {
   navMain: [
     {
       title: "Home",
-      url: "/",
+      url: "/dashboard",
       icon: Home,
       isActive: true,
     },
     {
       title: "History",
-      url: "/history",
+      url: "/dashboard/history",
       icon: FileClock,
     },
     {
       title: "Billing",
-      url: "/billing",
+      url: "/dashboard/pricing",
       icon: WalletCards,
     },
     {
       title: "Settings",
-      url: "/settings",
+      url: "/dashboard/settings",
       icon: Settings2,
       items: [
         {
@@ -89,28 +88,30 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar variant="inset" {...props}>
-      <SidebarHeader>
-        <Link href="/" aria-label="Homepage">
-          <Image
-            src="/logo.svg"
-            alt="logo"
-            width={75}
-            height={75}
-            priority
-            layout="responsive"
-          />
-          <div className="grid flex-1 text-left text-sm leading-tight">
-            <span className="truncate font-semibold">lucideCraft. Ai</span>
-          </div>
-        </Link>
+      <SidebarHeader className="flex items-start mt-4">
+        <Image
+          src="/logo.svg"
+          alt="LucideCraft.AI Logo"
+          width={100}
+          height={75}
+          priority
+        />
+        <div className="ml-2 text-left">
+          <span className="block font-bold text-md">LucideCraft.AI</span>
+          <span className="text-xs text-primary">Craft with Intelligence</span>
+        </div>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="flex justify-between">
         <NavMain items={data.navMain} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <div className="mt-8">
+          <UsageTrack />
+        </div>
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={data.user} />
-      </SidebarFooter>
+      {/* <SidebarFooter>
+        {/* <NavUser user={data.user} /> */}
+      {/* <UserButton />
+      </SidebarFooter> */}{" "}
+      */
     </Sidebar>
   );
 }

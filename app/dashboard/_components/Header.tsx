@@ -1,6 +1,7 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
+import { UserButton } from "@clerk/nextjs";
 import { Search } from "lucide-react";
 import React from "react";
 
@@ -11,10 +12,13 @@ function Header() {
         <Search />
         <Input type="text" placeholder="search..." className="outline-none" />
       </div>
-      <div>
-        <h2 className="bg-primary p-1 rounded-xl text-xs text-white px-2">
+      <div className="flex justify-between ">
+        <h2 className=" flex items-center justify-center bg-primary p-1 rounded-xl text-xs text-white px-2 mr-5">
           Join membership just for $9.99/month
         </h2>
+        <div className="flex justify-end ml-5 p-2 bg-primary rounded-full ">
+          <UserButton />
+        </div>
       </div>
     </div>
   );

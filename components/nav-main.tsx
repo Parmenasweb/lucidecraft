@@ -44,15 +44,15 @@ export function NavMain({
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible key={item.title} asChild defaultOpen={item.isActive}>
-            <SidebarMenuItem className="py-2 text-lg rounded-lg hover:bg-primary hover:text-white ">
+            <SidebarMenuItem className="py-1 text-lg rounded-lg hover:bg-primary hover:text-white ">
               <SidebarMenuButton
-                className="hover:bg-primary hover:text-white"
+                className="hover:bg-primary hover:text-white h-full"
                 asChild
                 tooltip={item.title}
               >
                 <Link
-                  className={`text-lg font-bold hover:bg-primary hover:text-white ${
-                    path === item.url && "bg-primary text-white"
+                  className={`text-lg font-bold h-full hover:bg-primary hover:text-white ${
+                    path === item.url && "bg-primary text-white py-4"
                   }`}
                   href={item.url}
                 >

@@ -21,7 +21,7 @@ export interface FORM {
   required?: boolean;
 }
 
-function TemplateList({ userSearchInput }: any) {
+function TemplateList({ userSearchInput }: { userSearchInput: string }) {
   const [templateList, setTemplateList] = useState(template);
   useEffect(() => {
     if (userSearchInput) {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import FormSection from "../_components/FormSection";
 import OutputSection from "../_components/OutputSection";
 import { template } from "@/app/(data)/Templates";
@@ -12,32 +12,54 @@ import { db } from "@/utils/db";
 import { AIOutput } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment";
+import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
+import { useRouter } from "next/navigation";
+// import { PageProps } from "@/.next/types/app/dashboard/content/[template-slug]/page";
 
 interface PROPS {
   params: {
-    "template-slug": string;
+    templateSlug: string;
   };
 }
-function CreateNewContent(props: PROPS) {
+
+function CreateNewContent({ params }: PROPS) {
   const selectedTemplate: TEMPLATE | undefined = template?.find(
-    (template) => template.slug === props.params["template-slug"]
+    (template) => template.slug === params.templateSlug
   );
   const [loading, setLoading] = useState(false);
   const [aiOutput, setAiOutput] = useState<string>("");
   const { user } = useUser();
+  const { totalUsage } = useContext(TotalUsageContext);
+  const router = useRouter();
 
   const generateAIContent = async (formData: Record<string, unknown>) => {
+    if (totalUsage >= 10000) {
+      alert(
+        "You have exceeded the maximum usage limit. Please upgrade your plan to continue generating content."
+      );
+      router.push("/dashboard/pricing");
+      return;
+    }
     setLoading(true);
     const selectedPrompt = selectedTemplate?.aiPrompt;
 
+    if (!selectedPrompt) {
+      console.error("Selected template prompt is undefined");
+      setLoading(false);
+      return;
+    }
+
     const finalAiPrompt = JSON.stringify(formData) + ", " + selectedPrompt;
     const result = await chatSession.sendMessage(finalAiPrompt);
-    setAiOutput(result?.response.text());
-    await saveInDb(
-      JSON.stringify(formData),
-      selectedTemplate?.slug,
-      result?.response.text()
-    );
+    if (result) {
+      const responseText = await result.response.text();
+      setAiOutput(responseText);
+      await saveInDb(
+        JSON.stringify(formData),
+        selectedTemplate?.slug,
+        responseText
+      );
+    }
     setLoading(false);
   };
 
@@ -54,12 +76,17 @@ function CreateNewContent(props: PROPS) {
       createdBy: user?.primaryEmailAddress?.emailAddress ?? "", // Provide a default empty string if undefined
       createdAt: moment().format("DD/MM/yyyy"),
     };
-    const result = await db.insert(AIOutput).values(content);
-    console.log(result);
+    try {
+      const result = await db.insert(AIOutput).values(content);
+      console.log(result);
+    } catch (error) {
+      console.error("Error saving to database:", error);
+    }
   };
+
   return (
     <div className="p-10">
-      <Link href={"/dashboard"}>
+      <Link href="/dashboard">
         <Button>
           <ArrowLeft /> Back
         </Button>

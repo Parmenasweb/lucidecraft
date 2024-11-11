@@ -1,21 +1,65 @@
 export const template = [
   {
-    name: "Blog Title",
-    desc: "An AI tool that generates log title based on your blog information",
-    category: "blog",
-    icon: "",
+    name: "Instagram caption generator",
+    desc: "An AI tool that generates caption for your next instagram post quick",
+    category: "instagram",
+    icon: "https://cdn-icons-png.flaticon.com/128/1409/1409946.png",
     aiPrompt:
-      "Write me 5 blog topic idea in bullet wise form only based on given niche & outline topic and give me the result in rich text editor format",
-    slug: "generate-blog-title",
+      "Write me 3 suitable instagram caption based on the provided prompt, make them follow different styles, witty and professional",
+    slug: "instagram-caption-generator",
     form: [
       {
-        label: "Enter your blog niche",
+        label: "whats you post about?",
         field: "input",
         name: "niche",
         required: true,
       },
       {
-        label: "Enter log outline",
+        label: "describe your post in more details(optional)",
+        field: "textarea",
+        name: "outline",
+      },
+    ],
+  },
+  {
+    name: "instagram hashtag generator",
+    desc: "An AI tool that generates your instagram hashtag for you",
+    category: "blog",
+    icon: "https://cdn-icons-png.flaticon.com/128/5109/5109610.png",
+    aiPrompt:
+      "Generate 10 hashtags suitable for an instagram post, make sure to generate hashtags for more engagement",
+    slug: "generate-blog-title",
+    form: [
+      {
+        label: "whats your post aout",
+        field: "input",
+        name: "niche",
+        required: true,
+      },
+      {
+        label: "describe your post(optional)",
+        field: "textarea",
+        name: "outline",
+      },
+    ],
+  },
+  {
+    name: "Blog Title",
+    desc: "An AI tool that generates blog title based on your blog information",
+    category: "blog",
+    icon: "https://cdn-icons-png.flaticon.com/128/8089/8089953.png",
+    aiPrompt:
+      "Write me 3 blog topic idea in bullet-point form only based on given niche & outline topic and give me the result in rich text editor format",
+    slug: "generate-blog-title",
+    form: [
+      {
+        label: "what's your blog niche?",
+        field: "input",
+        name: "niche",
+        required: true,
+      },
+      {
+        label: "more details about what you want?",
         field: "textarea",
         name: "outline",
       },
@@ -25,12 +69,12 @@ export const template = [
     name: "Blog Content",
     desc: "An AI tool that serves as your personal log title and content generator",
     category: "blog",
-    icon: "",
-    aiPrompt: "Generate log Content ased on topic and outline provided",
+    icon: "https://cdn-icons-png.flaticon.com/128/2593/2593549.png",
+    aiPrompt: "Generate log Content based on topic and outline provided",
     slug: "blog-content-generator",
     form: [
       {
-        label: "Enter your blog topic",
+        label: "whats your blog topic",
         field: "input",
         name: "topic",
         required: true,
@@ -43,86 +87,66 @@ export const template = [
     ],
   },
   {
-    name: "Blog Topic Ideas",
-    desc: "An AI tool that serves as your personal blog post title generator",
-    category: "blog",
-    icon: "",
+    name: "Youtube video Title generator(SEO optimized)",
+    desc: "An AI tool that serves as your personal youtube video title generator",
+    category: "Youtube tools",
+    icon: "https://cdn-icons-png.flaticon.com/128/2504/2504965.png",
     aiPrompt:
-      "Generate 5 blog topic ideas in ullet points ased on the niche provided",
-    slug: "blog-topic-idea",
+      "Write me best SEO optimized high ranked 5 youtube video title ideas based on provided prompt",
+    slug: "youtube-seo-title",
     form: [
       {
-        label: "Enter your blog topic",
+        label: "Enter your youtube video topic keywords",
         field: "input",
-        name: "niche",
+        name: "keywords",
         required: true,
       },
       {
-        label: "Enter blog outline here",
+        label: "Enter youtube description outline here",
         field: "textarea",
         name: "outline",
       },
     ],
   },
   {
-    name: "Youtue SEO Title",
-    desc: "An AI tool that serves as your personal blog post title generator",
-    category: "Youtue tools",
-    icon: "",
+    name: "Youtube Description Generator",
+    desc: "Generate your youtube video descriptions optimized for SEO using AI",
+    category: "Youtube tools",
+    icon: "https://cdn-icons-png.flaticon.com/128/10885/10885022.png",
     aiPrompt:
-      "Write me est SEO optimized high ranked 5 youtue title ideas ased on provided propt",
-    slug: "youtue-seo-title",
+      "Generate a SEO optimized Youtube description for the provided prompt with emoji ",
+    slug: "youtube-seo-description",
     form: [
       {
-        label: "Enter your youtue video topic keywords",
+        label: "Enter your youtube video topic keywords",
         field: "input",
         name: "keywords",
         required: true,
       },
       {
-        label: "Enter youtue description outline here",
+        label: "Enter youtube description outline here",
         field: "textarea",
         name: "outline",
       },
     ],
   },
   {
-    name: "Youtue Desription Generator",
+    name: "Youtube Tags Generator",
     desc: "An AI tool that serves as your personal blog post title generator",
-    category: "Youtue tools",
-    icon: "",
-    aiPrompt: "Generate Youtue description with emoji under 4-5",
-    slug: "youtue-seo-title",
+    category: "Youtube tools",
+    icon: "https://cdn-icons-png.flaticon.com/128/10884/10884882.png",
+    aiPrompt:
+      "Generate 10 youtube tags based on the provided prompt, make sure al the provided tags are seo optimized",
+    slug: "youtube-seo-tags-generator",
     form: [
       {
-        label: "Enter your youtue video topic keywords",
+        label: "Enter your youtube video topic keywords",
         field: "input",
         name: "keywords",
         required: true,
       },
       {
-        label: "Enter youtue description outline here",
-        field: "textarea",
-        name: "outline",
-      },
-    ],
-  },
-  {
-    name: "Youtue Tags Generator",
-    desc: "An AI tool that serves as your personal blog post title generator",
-    category: "Youtue tools",
-    icon: "",
-    aiPrompt: "Generate 10 youtue tags ased on provided propmpt",
-    slug: "youtue-seo-title",
-    form: [
-      {
-        label: "Enter your youtue video topic keywords",
-        field: "input",
-        name: "keywords",
-        required: true,
-      },
-      {
-        label: "Enter youtue description outline here",
+        label: "Enter youtube description outline here",
         field: "textarea",
         name: "outline",
       },
@@ -132,9 +156,9 @@ export const template = [
     name: "content re-write",
     desc: "This handy tool refines your writing , eliminating grammtical errors and mistakes",
     category: "Writing Assistant",
-    icon: "",
+    icon: "https://cdn-icons-png.flaticon.com/128/3079/3079998.png",
     aiPrompt:
-      "given textToImprove, re-write the content withut any grammatical errors or mistakes",
+      "given textToImprove, re-write the content without any grammatical errors or mistakes, and make sure its plagiarism free and seo optimized",
     slug: "content-rewriter",
     form: [
       {
@@ -144,7 +168,7 @@ export const template = [
         required: true,
       },
       {
-        label: "Enter youtue description outline here",
+        label: "more details you might want to provide",
         field: "textarea",
         name: "outline",
       },
@@ -152,10 +176,10 @@ export const template = [
   },
   {
     name: "Add Emojis to text",
-    desc: "This handy tool refines your writing , eliminating grammtical errors and mistakes",
+    desc: "This handy tool refines your writing , eliminating grammatical errors and mistakes",
     category: "Writing Assistant",
-    icon: "",
-    aiPrompt: "Add Emoji to utline text depends on outline",
+    icon: "https://cdn-icons-png.flaticon.com/128/2584/2584606.png",
+    aiPrompt: "Add Emoji to outline text depending on provided prompt",
     slug: "add-emoji-to-text",
     form: [
       {
@@ -164,29 +188,25 @@ export const template = [
         name: "textToImprove",
         required: true,
       },
-      {
-        label: "Enter youtue description outline here",
-        field: "textarea",
-        name: "outline",
-      },
     ],
   },
   {
-    name: "Rewrite Article",
+    name: "Article/content generator(plagiarism free)",
     desc: "Us thi tool to rewrite existing Article or log post",
     category: "Re-writing Tool",
-    icon: "",
-    aiPrompt: "Add Emoji to utline text depends on outline",
-    slug: "re-write-article",
+    icon: "https://cdn-icons-png.flaticon.com/128/3208/3208892.png",
+    aiPrompt:
+      "i want you to generate a professionally written, seo optimized, plagiarism free article/content on the provided prompt",
+    slug: "article-generator",
     form: [
       {
-        label: "Paste the article you want to rewrite",
+        label: "what topic do you have in mind?",
         field: "textarea",
         name: "article",
         required: true,
       },
       {
-        label: "Enter youtue description outline here",
+        label: "more description goes here...(optional)",
         field: "textarea",
         name: "outline",
       },
@@ -196,12 +216,12 @@ export const template = [
     name: "Write code",
     desc: "Ai model to generate programming code in any language",
     category: "code-writing-tool",
-    icon: "",
-    aiPrompt: "i want you to write the code ased on the prompt",
-    slug: "re-write-article",
+    icon: "https://cdn-icons-png.flaticon.com/128/6062/6062646.png",
+    aiPrompt: "i want you to write the code based on the prompt provided",
+    slug: "write-code-AI",
     form: [
       {
-        label: "descrie what you want to generate",
+        label: "describe what you want to generate",
         field: "textarea",
         name: "code-topic",
         required: true,
@@ -217,12 +237,13 @@ export const template = [
     name: "Explain code",
     desc: "Ai model to explain programming code in any language",
     category: "code-explain",
-    icon: "",
-    aiPrompt: "i want you to exlain the code provided in details",
-    slug: "re-write-article",
+    icon: "https://cdn-icons-png.flaticon.com/128/868/868786.png",
+    aiPrompt:
+      "i want you to explain the code provided in details, make it easy to understand and simpler",
+    slug: "code-explain",
     form: [
       {
-        label: "descrie what you want to generate",
+        label: "describe what you want to understand",
         field: "textarea",
         name: "code-topic",
         required: true,

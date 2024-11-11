@@ -2,7 +2,11 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import React from "react";
 
-function SearchSection({ onSearchInput }: any) {
+function SearchSection({
+  onSearchInput,
+}: {
+  onSearchInput: (value: string) => void;
+}) {
   return (
     <div className=" p-10 bg-gradient-to-r from-purple-500 via-purple-700 to-blue-600 flex justify-center items-center flex-col text-white rounded-md">
       <h2 className="text-xl font-bold">Browse All Templates</h2>
